@@ -132,7 +132,7 @@ BOOTSTRAP3 = {
 }
 
 # Heroku settings
-if os.getcwd() == '/app':
+if os.environ['HOME'] == '/app':
     import dj_database_url
     DATABASES = {
         'default': dj_database_url.config(default='postgres://localhost')
@@ -146,8 +146,8 @@ if os.getcwd() == '/app':
     DEBUG = False
 
     # Static asset configuration
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT = 'staticfiles'
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
     )
